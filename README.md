@@ -128,6 +128,41 @@ java -XX:+UnlockExperimentalVMOptions -XX:+EnableJVMCI                \
      -cp nalim.jar:app.jar MainClass 
 ```
 
+### Performance
+
+JMH benchmark for comparing regular JNI calls with nalim calls is available
+[here](https://github.com/apangin/nalim/blob/master/example/one/nalim/bench). 
+
+The following results were obtained on Intel Core i7-1280P CPU with JDK 17.0.4.1.
+
+#### Simple native method
+
+```
+static native int add(int a, int b);
+```
+
+```
+Benchmark           Mode  Cnt  Score   Error  Units
+JniBench.add_jni    avgt   10  6,535 ± 0,225  ns/op
+JniBench.add_nalim  avgt   10  0,862 ± 0,035  ns/op
+```
+
+#### Array processing
+
+```
+static native long max(long[] array, int length);
+```
+
+```
+Benchmark           (length)  Mode  Cnt    Score   Error  Units
+JniBench.max_jni          10  avgt   10   25,103 ± 0,994  ns/op
+JniBench.max_jni         100  avgt   10   55,981 ± 2,930  ns/op
+JniBench.max_jni        1000  avgt   10  433,106 ± 1,661  ns/op
+JniBench.max_nalim        10  avgt   10    3,477 ± 0,215  ns/op
+JniBench.max_nalim       100  avgt   10   38,368 ± 2,348  ns/op
+JniBench.max_nalim      1000  avgt   10  420,540 ± 4,049  ns/op
+```
+
 ### Supported platforms
 
  - **Linux:** amd64 aarch64
