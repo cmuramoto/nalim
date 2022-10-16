@@ -7,7 +7,7 @@
 
 package one.nalim;
 
-import sun.misc.Unsafe;
+import jdk.internal.misc.Unsafe;
 
 import java.lang.reflect.AccessibleObject;
 import java.lang.reflect.Constructor;
