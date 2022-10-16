@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 https://maven.apache.org/xsd/maven-4.0.0.xsd" xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+	<modelVersion>4.0.0</modelVersion>
+	<groupId>com.nc</groupId>
+	<artifactId>nalim</artifactId>
+	<version>1.0</version>
+	<description>JVMCI Link Support Tool</description>
+
+	<build>
+		<plugins>
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-compiler-plugin</artifactId>
+				<version>3.8.1</version>
+				<configuration>
+					<source>11</source>
+					<target>11</target>
+					<compilerArgs>
+						<arg>--add-modules</arg>
+						<arg>jdk.internal.vm.ci</arg>
+						<arg>--add-exports</arg>
+						<arg>jdk.internal.vm.ci/jdk.vm.ci.code=ALL-UNNAMED</arg>
+						<arg>--add-exports</arg>
+						<arg>jdk.internal.vm.ci/jdk.vm.ci.code.site=ALL-UNNAMED</arg>
+						<arg>--add-exports</arg>
+						<arg>jdk.internal.vm.ci/jdk.vm.ci.hotspot=ALL-UNNAMED</arg>
+						<arg>--add-exports</arg>
+						<arg>jdk.internal.vm.ci/jdk.vm.ci.meta=ALL-UNNAMED</arg>
+						<arg>--add-exports</arg>
+						<arg>jdk.internal.vm.ci/jdk.vm.ci.runtime=ALL-UNNAMED</arg>
+						<arg>--add-exports</arg>
+						<arg>java.base/jdk.internal.misc=ALL-UNNAMED</arg>
+					</compilerArgs>
+				</configuration>
+			</plugin>
+		</plugins>
+	</build>
+</project>
